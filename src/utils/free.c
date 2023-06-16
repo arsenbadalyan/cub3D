@@ -30,5 +30,7 @@ void *free_double(void ***addr)
 
 void free_all_mem(t_game *game)
 {
-
+	free_double((void *)&game->map);
+	free_single((void *)&game->options);
+	free_single((void *)&game);
 }

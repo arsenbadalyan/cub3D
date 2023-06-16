@@ -18,10 +18,29 @@
 # define E_WRPTH "File you want to run is invalid."
 # define E_WRCNF "Wrong map configuration. Please fill map in correct way."
 
+// Options identifiers
+# define REQUIRED_IDS 6
+# define SO_ID "SO"
+# define NO_ID "NO"
+# define WE_ID "WE"
+# define EA_ID "EA"
+# define FL_ID "F"
+# define CL_ID "C"
+
 // Game structures
 typedef struct s_game {
+	struct s_options *options;
 	char **map;
 } t_game;
+
+typedef struct s_options {
+	char* path_to_no;
+	char* path_to_so;
+	char* path_to_we;
+	char* path_to_ea;
+	int floor_colors[3];
+	int ceil_colors[3];
+} t_options;
 
 // Custom libs
 # include "libft.h"

@@ -21,6 +21,7 @@ static char** fill_map(t_game *game, int fd)
 	char*	line;
 	char*	trimmed;
 	char**	map;
+	int i = 0;
 
 	line = NULL;
 	trimmed = NULL;
@@ -34,9 +35,8 @@ static char** fill_map(t_game *game, int fd)
 		if(!trimmed)
 			catch_error(game, E_NOMEM);
 		if(ft_strlen(trimmed))
-			push_to_double_array(map, line);
+			map = push_to_double_array(map, line);
 		free_single((void *)&trimmed);
-		free_single((void *)&line);
 	}
 	return (map);
 }

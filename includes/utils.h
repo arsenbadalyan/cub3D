@@ -3,6 +3,7 @@
 
 // [ Initialize ]
 t_game *init_game();
+t_options *init_options();
 
 // [ Mutations ]
 size_t get_2d_array_length(void **array);
