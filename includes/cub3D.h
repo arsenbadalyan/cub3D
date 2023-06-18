@@ -38,8 +38,8 @@ typedef struct s_options {
 	char* path_to_so;
 	char* path_to_we;
 	char* path_to_ea;
-	int floor_colors[3];
-	int ceil_colors[3];
+	int floor_colors[4];
+	int ceil_colors[4];
 } t_options;
 
 // Custom libs
@@ -49,5 +49,9 @@ typedef struct s_options {
 
 // Parser part
 void	parse_controller(t_game *game, char **argv, int argc);
+
+// Validators
 int		call_validator(t_game *game, char **map);
+int		validate_options(t_game *game, char **map);
+
 #endif

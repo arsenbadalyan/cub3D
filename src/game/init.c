@@ -25,7 +25,7 @@ t_options *init_options()
 	options->path_to_so = NULL;
 	options->path_to_ea = NULL;
 	options->path_to_we = NULL;
-	ft_bzero((void *)options->floor_colors, sizeof(int) * 3);
-	ft_bzero((void *)options->ceil_colors, sizeof(int) * 3);
+	ft_bzero((void *)options->floor_colors, sizeof(int) * 4);
+	ft_bzero((void *)options->ceil_colors, sizeof(int) * 4);
 	return (options);
 }
