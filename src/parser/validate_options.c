@@ -5,7 +5,7 @@
 */
 static int cmp_opt(t_game* game, t_options* options, char *id, char *needle);
 static int cmp_addn_opt(t_game* game, t_options* options, char *id, char *needle);
-static int is_rgb(char* rgb, int* addr);
+static int is_rgb(char *rgb, int *addr, size_t i, size_t j);
 
 /*
     Checking NO, SO, WE, EA options
@@ -38,31 +38,26 @@ static int cmp_opt(t_game* game, t_options* options, char *id, char *needle)
     rgb must be from 0 to 255
     if other value validation fails
 */
-static int is_rgb(char* rgb, int* addr)
+static int is_rgb(char* rgb, int* addr, size_t i, size_t j)
 {
 	size_t	len;
 	int		nbr;
-	size_t	i;
 
 	if(!rgb)
 		return (EXIT_FAILURE);
-    i = 0;
     while(rgb[i + 1] && rgb[i] == '0')
-	{
-        puts("HERE");
         i++;
-    }
-	printf("%zu\n", i);
 	len = ft_strlen(rgb + i);
 	if(len < 1 || len > 3)
 		return (EXIT_FAILURE);
+	j = i;
 	while(rgb[i])
 	{
 		if(!ft_isdigit(rgb[i]))
 			return (EXIT_FAILURE);
         i++;
 	}
-	nbr = ft_atoi(rgb + i);
+	nbr = ft_atoi(rgb + j);
 	if(nbr > 255)
 		return (EXIT_FAILURE);
 	*addr = nbr;
@@ -89,7 +84,7 @@ static int cmp_addn_opt(t_game* game, t_options* options, char *id, char *needle
 		return (EXIT_FAILURE);
 	while(i < 4)
 	{
-		if(is_rgb(rgb[i - 1], &option_ptr[i]) && !free_double((void *)&rgb))
+		if(is_rgb(rgb[i - 1], &option_ptr[i], 0, 0) && !free_double((void *)&rgb))
 			return (EXIT_FAILURE);
         i++;
 	}
@@ -111,7 +106,6 @@ int validate_options(t_game *game, char **map)
 	while (map[i] && i < REQUIRED_IDS)
 	{
 		cur_line = ft_split(map[i], ' ');
-		printf("%s\n", cur_line[0]);
 		if (!cur_line)
 			catch_error(game, E_NOMEM);
 		if ((!cur_line[0] || !cur_line[1] || cur_line[2] != NULL)
@@ -120,10 +114,7 @@ int validate_options(t_game *game, char **map)
 		if (cmp_opt(game, game->options, cur_line[0], cur_line[1])
             && cmp_addn_opt(game, game->options, cur_line[0], cur_line[1])
 			&& !free_double((void *)&cur_line))
-		{
-            printf("HERE\n");
             return (EXIT_FAILURE);
-        }
 		free_double((void *)&cur_line);
 		i++;
 	}

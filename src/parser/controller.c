@@ -56,6 +56,23 @@ static char** open_map(t_game *game, char *map_name)
 	return (map);
 }
 
+void	trim_options(t_game *game, char **map)
+{
+	char*	trimmed;
+	size_t	i;
+
+	i = 0;
+	while(map[i] && i < REQUIRED_IDS)
+	{
+		trimmed = ft_strtrim(map[i], WHITE_SPACE);
+		if(!trimmed)
+			catch_error(game, E_NOMEM);
+		free_single((void *)&map[i]);
+		map[i] = trimmed;
+		i++;
+	}
+}
+
 void	parse_controller(t_game *game, char **argv, int argc)
 {
 	if(argc != 1)
@@ -63,6 +80,7 @@ void	parse_controller(t_game *game, char **argv, int argc)
 	game->map = open_map(game, argv[0]);
 	if (!game->map)
 		catch_error(game, E_WRCNF);
+	trim_options(game, game->map);
 	if (call_validator(game, game->map))
 		catch_error(game, E_WRCNF);
 }
