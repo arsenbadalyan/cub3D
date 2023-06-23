@@ -1,4 +1,4 @@
-#ifndef CUB3D_H
+ #ifndef CUB3D_H
 #define CUB3D_H
 
 # include <mlx.h>
@@ -10,6 +10,9 @@
 // Constants
 # define WHITE_SPACE	" \t\r\n\f\v"
 # define EXTENTION		"cub"
+# define W_WIDTH 600
+# define W_HEIGHT 600
+# define TITLE "Cub3D"
 
 // Error messages
 # define E_NOMEM "We have memory issue. Please free space in your memory and come back." 
@@ -17,6 +20,7 @@
 # define E_WREXT "File extention is wrong. Please give file with .cub extention."
 # define E_WRPTH "File you want to run is invalid."
 # define E_WRCNF "Wrong map configuration. Please fill map in correct way."
+# define E_MLXLIB "MiniLibX error"
 
 // Options identifiers
 # define REQUIRED_IDS 6
@@ -29,9 +33,19 @@
 
 // Game structures
 typedef struct s_game {
-	struct s_options *options;
-	char **map;
-} t_game;
+	struct s_options	*options;
+	char				**map;
+}	t_game;
+
+typedef struct s_mlx {
+	void	*mlx;
+	void	*win;
+	void	*img_ptr;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_mlx;
 
 typedef struct s_options {
 	char* path_to_no;
@@ -54,4 +68,7 @@ void	parse_controller(t_game *game, char **argv, int argc);
 int		call_validator(t_game *game, char **map);
 int		validate_options(t_game *game, char **map);
 
+// [ MiniLibX]
+int	close_win(t_mlx *p);
+int	create_trgb(int t, int r, int g, int b);
 #endif

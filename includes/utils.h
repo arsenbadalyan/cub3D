@@ -18,4 +18,5 @@ void free_all_mem(t_game *game);
 // [ Error handling ]
 void catch_error(t_game *game, const char* msg);
 
+
 #endif
