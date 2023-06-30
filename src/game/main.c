@@ -1,35 +1,36 @@
 #include "cub3D.h"
 
-t_mlx	*init_mlx(t_game *game)
+int	mouse(int x, int y, t_mlx *mlx)
 {
-	t_mlx	*mlx;
+	int 	key;
+	t_game	*g;
 
-	mlx = (t_mlx *)malloc(sizeof(t_mlx));
-	if (!mlx)
-		catch_error(game, E_NOMEM);
-	mlx->mlx = mlx_init();
-	if (!mlx->mlx)
-		catch_error(game, E_MLXLIB);
-	mlx->win = mlx_new_window(mlx->mlx, W_WIDTH, W_HEIGHT, TITLE);
-	if (!mlx->win)
-		catch_error(game, E_MLXLIB);
-	mlx->img_ptr = mlx_new_image(mlx->mlx, W_WIDTH, W_HEIGHT);
-	if (!mlx->img_ptr)
-		catch_error(game, E_MLXLIB);
-    mlx->addr = mlx_get_data_addr(mlx->img_ptr, &mlx->bpp, &mlx->line_len, &mlx->endian);
-    if (!mlx->addr)
-		catch_error(game, E_MLXLIB);
-    return (mlx);
+	(void)y;
+	puts("HELLO");
+	g = mlx->game;
+	if (x < g->pos_mouse.x && x < W_WIDTH / 2)
+		key = LEFT_ARROW;
+	else if (x > g->pos_mouse.x && x > W_WIDTH / 2)
+		key = RIGHT_ARROW;
+	g->pos_mouse.x = x;
+	if (key == LEFT_ARROW || key == RIGHT_ARROW)
+		rotate_player(key, g, SPD_R_M);
+	return (0);
 }
 
 void	game_loop(t_mlx *mlx, t_game *game)
 {
-	int		x;
-	int		y;
-	char	*addr;
-	void	*img;
-	mlx_hook(mlx->win, 17, 1L << 17, close_win, &mlx);
-
+	game_init(game);
+	if (player_position(game))
+		catch_error(game, E_WRCNF);
+	get_textures(mlx, game, &game->map_t.no, game->options->path_to_no);
+	get_textures(mlx, game, &game->map_t.so, game->options->path_to_so);
+	get_textures(mlx, game, &game->map_t.ea, game->options->path_to_ea);
+	get_textures(mlx, game, &game->map_t.we, game->options->path_to_we);
+	mlx_loop_hook(mlx->mlx, &create_walls, mlx);
+	mlx_hook(mlx->win, 2, 1L << 0, &keys, mlx);
+	mlx_hook(mlx->win, 6, 1L << 0, &mouse, mlx);
+	mlx_hook(mlx->win, 17, 1L << 17, &close_win, mlx);
 	mlx_loop(mlx->mlx);
 }
 
