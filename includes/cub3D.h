@@ -27,10 +27,18 @@
 # define FL_ID "F"
 # define CL_ID "C"
 
+// Game flags
+# define WALL_FLAG '1'
+# define SPACE_FLAG '0'
+# define DOOR_FLAG 'D'
+# define VALID_FLAGS "10D \n"
+# define UNIQUE_FLAGS "NSEW"
+
 // Game structures
 typedef struct s_game {
 	struct s_options *options;
 	char **map;
+	size_t	map_size;
 } t_game;
 
 typedef struct s_options {
@@ -53,5 +61,5 @@ void	parse_controller(t_game *game, char **argv, int argc);
 // Validators
 int		call_validator(t_game *game, char **map);
 int		validate_options(t_game *game, char **map);
-
+int		main_flag_validator(t_game* game, char **map);
 #endif
