@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/01 10:39:57 by armartir          #+#    #+#             */
+/*   Updated: 2023/07/01 10:40:13 by armartir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 int	create_trgb(int t, int r, int g, int b)
@@ -19,9 +31,9 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x >=0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
+	if (x >= 0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
 	{
-		dst = mlx->addr + (y * mlx->line_len + x * (mlx->bpp/8));
+		dst = mlx->addr + (y * mlx->line_len + x * (mlx->bpp / 8));
 		*(unsigned int *)dst = color;
 	}
 }

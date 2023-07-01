@@ -1,29 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   calculate_game.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/01 10:35:15 by armartir          #+#    #+#             */
+/*   Updated: 2023/07/01 16:17:56 by armartir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
-void	calculate(t_game *game)
+void	calculate(t_game *g)
 {
 	double	x;
 
-	x = game->ray.i * 2.0 / (double)W_WIDTH - 1.0;
-	game->ray.dir.x = game->player.dir.x + game->point.x * x;
-	game->ray.dir.y = game->player.dir.y + game->point.y * x;
-	game->map_t.x = (int)game->player.pos.x;
-	game->map_t.y = (int)game->player.pos.y;
-	game->ray.delta.x = fabs(1.0 / game->ray.dir.x);
-	game->ray.delta.y = fabs(1.0 / game->ray.dir.y);
-	game->ray.step_x = 1;
-	game->ray.side.x = (game->map_t.x + 1.0 - game->player.pos.x) * game->ray.delta.x;
-	game->ray.step_y = 1;
-	game->ray.side.y = (game->map_t.y + 1.0 - game->player.pos.y) * game->ray.delta.y;
-	if (game->ray.dir.x < 0)
+	x = g->ray.i * 2.0 / (double)W_WIDTH - 1.0;
+	g->ray.dir.x = g->player.dir.x + g->point.x * x;
+	g->ray.dir.y = g->player.dir.y + g->point.y * x;
+	g->map_t.x = (int)g->player.pos.x;
+	g->map_t.y = (int)g->player.pos.y;
+	g->ray.delta.x = fabs(1.0 / g->ray.dir.x);
+	g->ray.delta.y = fabs(1.0 / g->ray.dir.y);
+	g->ray.step_x = 1;
+	g->ray.side.x = (g->map_t.x + 1.0 - g->player.pos.x) * g->ray.delta.x;
+	g->ray.step_y = 1;
+	g->ray.side.y = (g->map_t.y + 1.0 - g->player.pos.y) * g->ray.delta.y;
+	if (g->ray.dir.x < 0)
 	{
-		game->ray.step_x = -1;
-		game->ray.side.x = (game->player.pos.x - game->map_t.x) * game->ray.delta.x;
+		g->ray.step_x = -1;
+		g->ray.side.x = (g->player.pos.x - g->map_t.x) * g->ray.delta.x;
 	}
-	if (game->ray.dir.y < 0)
+	if (g->ray.dir.y < 0)
 	{
-		game->ray.step_y = -1;
-		game->ray.side.y = (game->player.pos.y - game->map_t.y) * game->ray.delta.y;
+		g->ray.step_y = -1;
+		g->ray.side.y = (g->player.pos.y - g->map_t.y) * g->ray.delta.y;
 	}
 }
 
@@ -58,7 +70,7 @@ void	wall(t_game *game)
 	else
 		game->wall.dist = game->ray.side.y - game->ray.delta.y;
 	game->wall.height = (int)(W_HEIGHT / game->wall.dist);
-	game->wall.top = -game->wall.height / 2 + W_HEIGHT / 2; 
+	game->wall.top = -game->wall.height / 2 + W_HEIGHT / 2;
 }
 
 void	wall_texture(t_game *game)
@@ -78,7 +90,7 @@ void	wall_texture(t_game *game)
 
 int	find(t_game *game, int x, int y)
 {
-	int *tmp;
+	int	*tmp;
 
 	if (!game->ray.vert_hit)
 	{

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/01 10:38:00 by armartir          #+#    #+#             */
+/*   Updated: 2023/07/01 12:13:32 by armartir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	draw_minimap(t_mlx *mlx, int color, int x, int y)
@@ -6,10 +18,10 @@ void	draw_minimap(t_mlx *mlx, int color, int x, int y)
 	int	j;
 
 	i = y;
-	while (i < y + 6)
+	while (i < y + 5)
 	{
 		j = x;
-		while (j < x + 6)
+		while (j < x + 5)
 		{
 			my_mlx_pixel_put(mlx, j, i, color);
 			j++;
@@ -33,13 +45,13 @@ void	minimap(t_mlx *mlx)
 		while (game->map[i][++j])
 		{
 			if (game->map[i][j] == '0')
-				color = 0x000000;
+				color = 0xFFFFFF;
 			else if (game->map[i][j] == '1')
-				color = 0x0000FF;
+				color = 0x6495ED;
 			if (game->map[i][j] == '0' || game->map[i][j] == '1')
-				draw_minimap(mlx, color, j * 6, (i - 5) * 6);
+				draw_minimap(mlx, color, j * 5, (i - 5) * 5);
 		}
 	}
-	draw_minimap(mlx, 0x00FF00,
-		(int)game->player.pos.x * 6, ((int)game->player.pos.y - 5) * 6);
+	draw_minimap(mlx, 0xFF0000,
+		(int)game->player.pos.x * 5, ((int)game->player.pos.y - 5) * 5);
 }

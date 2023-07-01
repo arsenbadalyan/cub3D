@@ -1,4 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movement.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/01 10:38:13 by armartir          #+#    #+#             */
+/*   Updated: 2023/07/01 17:06:52 by armartir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
+
+int	mouse(int x, int y, t_mlx *mlx)
+{
+	int		key;
+	t_game	*g;
+
+	(void)y;
+	g = mlx->game;
+	if (x < g->pos_mouse.x && x < W_WIDTH / 2)
+		key = LEFT_ARROW;
+	else if (x > g->pos_mouse.x && x > W_WIDTH / 2)
+		key = RIGHT_ARROW;
+	g->pos_mouse.x = x;
+	if (key == LEFT_ARROW || key == RIGHT_ARROW)
+		rotate_player(key, g, SPD_R * 0.15);
+	return (0);
+}
 
 void	forw_back_move(int key, t_game *g)
 {
@@ -35,7 +64,7 @@ void	rotate_player(int key, t_game *g, double r)
 			- g->player.dir.y * sin(-r);
 		g->player.dir.y = dir_x * sin(-r) + g->player.dir.y * cos(-r);
 		g->point.x = g->point.x * cos(-r) - g->point.y * sin(-r);
-		g->point.y = point_x * sin(-r) + g->point.y * cos(-r); 
+		g->point.y = point_x * sin(-r) + g->point.y * cos(-r);
 	}
 	else if (key == RIGHT_ARROW)
 	{
@@ -78,7 +107,7 @@ int	keys(int key, t_mlx *mlx)
 		close_win(mlx);
 	else if (key == KEY_W || key == KEY_S)
 		forw_back_move(key, game);
-	else if(key == KEY_A || key == KEY_D)
+	else if (key == KEY_A || key == KEY_D)
 		left_right_move(key, game);
 	else if (key == RIGHT_ARROW || key == LEFT_ARROW)
 		rotate_player(key, game, SPD_R);

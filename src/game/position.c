@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   position.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/01 10:38:21 by armartir          #+#    #+#             */
+/*   Updated: 2023/07/01 10:38:28 by armartir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
+
 void	set_direction(t_game *game, char pov, double y, double x)
 {
 	game->player.pos.x = x + 0.5;
@@ -8,14 +21,12 @@ void	set_direction(t_game *game, char pov, double y, double x)
 		game->player.dir.x = 1;
 		game->point.x = 0;
 		game->point.y = 0.66;
-
 	}
 	else if (pov == 'W')
 	{
 		game->player.dir.x = -1;
 		game->point.x = 0;
 		game->point.y = -0.66;
-
 	}
 	else if (pov == 'S')
 	{
@@ -44,7 +55,6 @@ int	player_position(t_game *game)
 				if (count++)
 					return (EXIT_FAILURE);
 				set_direction(game, game->map[(int)i][(int)j], i, j);
-				// TODO:check in final version '0' ? 0
 				game->map[(int)i][(int)j] = '0';
 			}
 		}

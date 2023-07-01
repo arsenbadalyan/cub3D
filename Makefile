@@ -4,14 +4,14 @@ COMPILER = cc
 # CFLAGS   = -Wall -Wextra -Werror
 RM       = rm -rf
 OUTPUT   = ./$(NAME)
-LIBS     = -I./includes/
+LIBS     = -I./includes/ -I./mlx/
 LIBS_DIR = includes
 
 # Libft
 LIBFT     = ft
-MLX   	  = -L /usr/local/lib/ -lmlx -lX11 -lXext -lm
+MLX   	  = mlx
 LIBFT_DIR = ./lib$(LIBFT)/
-# MLX_DIR   = ./$(MLX)/
+MLX_DIR   = ./$(MLX)/
 
 # Compiled directories
 SRC = src
@@ -39,20 +39,12 @@ all: $(NAME)
 
 bonus: all
 
-# $(NAME): $(LIB_DIR) Makefile $(OBJS)
-# 	@make WAIT_COMPILE_MSG
-# 	@echo "${GREEN}-> Compiling LIBFT...${RESET}"
-# 	@make -C $(LIBFT_DIR) all
-# 	@$(COMPILER) -g $(CFLAGS) $(LIBS) -L$(MLX_DIR) -l$(MLX) -L$(LIBFT_DIR) -l$(LIBFT) -framework OpenGL -framework AppKit $(OBJS) -o $(NAME)
-# 	@make DONE_MSG
-
 $(NAME): $(LIB_DIR) Makefile $(OBJS)
 	@make WAIT_COMPILE_MSG
 	@echo "${GREEN}-> Compiling LIBFT...${RESET}"
 	@make -C $(LIBFT_DIR) all
-	@$(COMPILER) $(OBJS) -o $(NAME)  $(LIBS)  -L$(LIBFT_DIR) -l$(LIBFT)  $(MLX)
+	@$(COMPILER) -g $(CFLAGS) $(LIBS) -L$(MLX_DIR) -l$(MLX) -L$(LIBFT_DIR) -l$(LIBFT) -framework OpenGL -framework AppKit $(OBJS) -o $(NAME)
 	@make DONE_MSG
-
 
 $(OBJ)/%.o: $(SRC)/%.c $(LIB_DIR)
 	@mkdir -p $(OBJ) $(OBJ_DIR)
