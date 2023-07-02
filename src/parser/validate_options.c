@@ -95,16 +95,16 @@ static int cmp_addn_opt(t_game* game, t_options* options, char *id, char *needle
 /*
     Main function that controls options validation
 */
-int validate_options(t_game *game, char **map)
+int validate_options(t_game *game, char **map, int i, int size)
 {
 	char**	cur_line;
 	int		finded;
-	int		i;
 
-	i = 0;
 	cur_line = NULL;
-	while (map[i] && i < REQUIRED_IDS)
+	while (map[i] && size < REQUIRED_IDS)
 	{
+		if(is_empty_line(game, map[i]) && ++i)
+			continue ;
 		cur_line = ft_split(map[i], ' ');
 		if (!cur_line)
 			catch_error(game, E_NOMEM);
@@ -117,6 +117,7 @@ int validate_options(t_game *game, char **map)
             return (EXIT_FAILURE);
 		free_double((void *)&cur_line);
 		i++;
+		size++;
 	}
 	return (EXIT_SUCCESS);
 }

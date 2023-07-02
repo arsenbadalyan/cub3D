@@ -60,6 +60,8 @@ void	parse_controller(t_game *game, char **argv, int argc);
 
 // Validators
 int		call_validator(t_game *game, char **map);
-int		validate_options(t_game *game, char **map);
+int validate_options(t_game *game, char **map, int i, int size);
 int		main_flag_validator(t_game* game, char **map);
+int		is_empty_line(t_game* game, char* line);
+
 #endif

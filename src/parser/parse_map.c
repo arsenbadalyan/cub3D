@@ -51,16 +51,16 @@ static int check_flag(t_game* game, size_t* borders, size_t i, size_t j)
 /*
 	Validate flags if they are in wrong place
 */
-static int validate_flags(t_game* game, char** map, size_t* borders)
+static int validate_flags(t_game* game, char** map, size_t* borders, int unique)
 {
-	int	unique;
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	unique = 0;
 	while(map[i])
 	{
+		if (is_empty_line(game, map[i]))
+			return (EXIT_FAILURE);
 		j = 0;
 		while(map[i][j])
 		{
@@ -85,7 +85,7 @@ int main_flag_validator(t_game* game, char **map)
 	size_t map_borders[game->map_size];
 
 	get_borders(game, map, map_borders);
-	if(validate_flags(game, map, map_borders))
+	if(validate_flags(game, map, map_borders, 0))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

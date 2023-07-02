@@ -31,12 +31,7 @@ static char** fill_map(t_game *game, int fd)
 		line = get_next_line(fd);
 		if(!line)
 			break;
-		trimmed = ft_strtrim(line, WHITE_SPACE);
-		if(!trimmed)
-			catch_error(game, E_NOMEM);
-		if(ft_strlen(trimmed))
-			map = push_to_double_array(map, line);
-		free_single((void *)&trimmed);
+		map = push_to_double_array(map, line);
 	}
 	return (map);
 }
@@ -60,15 +55,20 @@ void	trim_options(t_game *game, char **map)
 {
 	char*	trimmed;
 	size_t	i;
+	size_t	size;
 
 	i = 0;
-	while(map[i] && i < REQUIRED_IDS)
+	size = 0;
+	while(map[i] && size < REQUIRED_IDS)
 	{
+		if(is_empty_line(game, map[i]) && ++i)
+			continue;
 		trimmed = ft_strtrim(map[i], WHITE_SPACE);
 		if(!trimmed)
 			catch_error(game, E_NOMEM);
 		free_single((void *)&map[i]);
 		map[i] = trimmed;
+		size++;
 		i++;
 	}
 }
