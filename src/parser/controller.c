@@ -61,7 +61,7 @@ void	trim_options(t_game *game, char **map)
 	size = 0;
 	while(map[i] && size < REQUIRED_IDS)
 	{
-		if(is_empty_line(game, map[i]) && ++i)
+		if(!is_full_line(game, map[i]) && ++i)
 			continue;
 		trimmed = ft_strtrim(map[i], WHITE_SPACE);
 		if(!trimmed)

@@ -59,7 +59,7 @@ static int validate_flags(t_game* game, char** map, size_t* borders, int unique)
 	i = 0;
 	while(map[i])
 	{
-		if (is_empty_line(game, map[i]))
+		if (!is_full_line(game, map[i]))
 			return (EXIT_FAILURE);
 		j = 0;
 		while(map[i][j])

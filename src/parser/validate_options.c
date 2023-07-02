@@ -103,7 +103,7 @@ int validate_options(t_game *game, char **map, int i, int size)
 	cur_line = NULL;
 	while (map[i] && size < REQUIRED_IDS)
 	{
-		if(is_empty_line(game, map[i]) && ++i)
+		if(!is_full_line(game, map[i]) && ++i)
 			continue ;
 		cur_line = ft_split(map[i], ' ');
 		if (!cur_line)

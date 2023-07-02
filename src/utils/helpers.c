@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-int is_empty_line(t_game* game, char* line)
+int is_full_line(t_game* game, char* line)
 {
 	size_t	i;
 
