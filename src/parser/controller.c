@@ -1,70 +1,62 @@
 #include "cub3D.h"
 
-static int is_correct_ext(t_game *game, char *map_name)
-{
-	char **ext;
-	size_t size;
-	int status;
+static void	trim_options(t_game *game, char **map);
+static char	**fill_map(t_game *game, int fd);
 
-	status = EXIT_SUCCESS;
-	ext = ft_split(map_name, '.');
-	if(!ext)
-		catch_error(game, E_NOMEM);
-	size = get_2d_array_length((void **)ext);
-	if(ft_strcmp(ext[size - 1], EXTENTION))
-		status = EXIT_FAILURE;
-	return (status);
-}
-
-static char** fill_map(t_game *game, int fd)
+/*
+	Filling map in variable
+*/
+static char	**fill_map(t_game *game, int fd)
 {
-	char*	line;
-	char*	trimmed;
-	char**	map;
-	int i = 0;
+	char	*line;
+	char	**map;
 
 	line = NULL;
-	trimmed = NULL;
 	map = NULL;
-	while(1)
+	while (1)
 	{
 		line = get_next_line(fd);
-		if(!line)
-			break;
+		if (!line)
+			break ;
 		map = push_to_double_array(map, line);
+		if (!map)
+			catch_error(game, E_NOMEM);
 	}
 	return (map);
 }
 
-static char** open_map(t_game *game, char *map_name)
+/*
+	Opening file and fill it in variable
+*/
+static char	**open_map(t_game *game, char *map_name)
 {
-	char** map;
-	int fd;
+	char	**map;
+	int		fd;
 
-	if(is_correct_ext(game, map_name))
+	if (is_correct_ext(game, map_name, "cub"))
 		catch_error(game, E_WREXT);
 	fd = open(map_name, O_RDONLY);
-	if(fd == -1)
+	if (fd == -1)
 		catch_error(game, E_WRPTH);
 	map = fill_map(game, fd);
 	close(fd);
 	return (map);
 }
 
-void	trim_options(t_game *game, char **map)
+static void	trim_options(t_game *game, char **map)
 {
-	char*	trimmed;
 	size_t	i;
 	size_t	size;
+	char		*trimmed;
 
 	i = 0;
 	size = 0;
-	while(map[i] && size < REQUIRED_IDS)
+	while (map[i] && size < REQUIRED_IDS)
 	{
-		if(!is_full_line(game, map[i]) && ++i)
-			continue;
+		if (!is_full_line(map[i]) && ++i)
+			continue ;
 		trimmed = ft_strtrim(map[i], WHITE_SPACE);
-		if(!trimmed)
+		if (!trimmed)
 			catch_error(game, E_NOMEM);
 		free_single((void *)&map[i]);
 		map[i] = trimmed;
@@ -75,12 +67,17 @@ void	trim_options(t_game *game, char **map)
 
 void	parse_controller(t_game *game, char **argv, int argc)
 {
-	if(argc != 1)
+	int	status;
+
+	if (argc != 1)
 		catch_error(game, E_WRARG);
 	game->map = open_map(game, argv[0]);
 	if (!game->map)
 		catch_error(game, E_WRCNF);
 	trim_options(game, game->map);
-	if (call_validator(game, game->map))
+	status = call_validator(game, game->map);
+	if (status == EXIT_FAILURE)
 		catch_error(game, E_WRCNF);
+	else if (status == (EXIT_FAILURE + 1))
+		catch_error(game, E_WRXPM);
 }

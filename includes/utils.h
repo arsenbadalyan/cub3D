@@ -18,4 +18,7 @@ void free_all_mem(t_game *game);
 // [ Error handling ]
 void catch_error(t_game *game, const char* msg);
 
+// [ Useful functions ]
+int is_correct_ext(t_game* game, char* path, char* check);
+
 #endif

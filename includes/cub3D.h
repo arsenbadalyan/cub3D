@@ -17,6 +17,7 @@
 # define E_WREXT "File extention is wrong. Please give file with .cub extention."
 # define E_WRPTH "File you want to run is invalid."
 # define E_WRCNF "Wrong map configuration. Please fill map in correct way."
+# define E_WRXPM "XPM file path is invalid. Please check and run again."
 
 // Options identifiers
 # define REQUIRED_IDS 6
@@ -62,6 +63,6 @@ void	parse_controller(t_game *game, char **argv, int argc);
 int		call_validator(t_game *game, char **map);
 int validate_options(t_game *game, char **map, int i, int size);
 int		main_flag_validator(t_game* game, char **map);
-int		is_full_line(t_game* game, char* line);
+int		is_full_line(char* line);
 
 #endif

@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-int is_full_line(t_game* game, char* line)
+int is_full_line(char* line)
 {
 	size_t	i;
 
@@ -14,4 +14,24 @@ int is_full_line(t_game* game, char* line)
 		i++;
 	}
 	return (EXIT_SUCCESS);
+}
+
+/*
+	Checking file extention
+*/
+int is_correct_ext(t_game* game, char* path, char* check)
+{
+	char **ext;
+	size_t size;
+	int status;
+
+	status = EXIT_SUCCESS;
+	ext = ft_split(path, '.');
+	if (!ext)
+		catch_error(game, E_NOMEM);
+	size = get_2d_array_length((void **)ext);
+	if (ft_strcmp(ext[size - 1], check))
+		status = EXIT_FAILURE;
+	free_double((void *)&ext);
+	return (status);
 }
