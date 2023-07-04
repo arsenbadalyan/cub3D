@@ -36,6 +36,6 @@ void		catch_error(t_game *game, const char *msg);
 int			check_xpm_file(const char *line);
 
 // [ Useful functions ]
-int is_correct_ext(t_game* game, char* path, char* check);
+int			is_correct_ext(t_game *game, char *path, char *check);
 
 #endif

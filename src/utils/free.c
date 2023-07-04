@@ -1,4 +1,3 @@
-
 #include "cub3D.h"
 
 void	*free_single(void **addr)

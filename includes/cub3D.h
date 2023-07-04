@@ -49,9 +49,11 @@
 # define TITLE "Cub3D"
 
 // Error messages
-# define E_NOMEM "We have memory issue. Please free space in your memory and come back."
+# define E_NOMEM "We have memory issue. Please free space \
+	in your memory and come back."
 # define E_WRARG "Please give only 1 argument(map path)."
-# define E_WREXT "File extention is wrong. Please give file with .cub extention."
+# define E_WREXT "File extention is wrong. Please give file \
+	with .cub extention."
 # define E_WRPTH "File you want to run is invalid."
 # define E_XPM   ".xpm to file convert error."
 # define E_WRCNF "Wrong map configuration. Please fill map in correct way."
@@ -84,9 +86,9 @@ void	parse_controller(t_game *game, char **argv, int argc);
 
 // Validators
 int		call_validator(t_game *game, char **map);
-int validate_options(t_game *game, char **map, int i, int size);
-int		main_flag_validator(t_game* game, char **map);
-int		is_full_line(char* line);
+int		validate_options(t_game *game, char **map, int i, int size);
+int		main_flag_validator(t_game *game, char **map);
+int		is_full_line(char *line);
 
 // MiniLibX
 int		close_win(t_mlx *p);
@@ -123,8 +125,6 @@ void	left_right_move(int key, t_game *g);
 void	rotate_player(int key, t_game *g, double r);
 void	forw_back_move(int key, t_game *g);
 int		mouse(int x, int y, t_mlx *mlx);
-
-
-void	my_sprite(t_mlx * mlx);
+void	my_sprite(t_mlx *mlx);
 
 #endif

@@ -1,8 +1,8 @@
-NO ./path_to_the_north_texture.xpm
-SO ./path_to_the_south_texture.xpm
+NO ../sprites/Walls/East.xpm
+SO ../sprites/Walls/East.xpm
 F 220,10,0
-WE ./path_to_the_west_texture.xpm
-EA ./path_to_the_east_texture.xpm
+WE ../sprites/Walls/East.xpm
+EA ../sprites/Walls/East.xpm
 C 0,30,0
 
         1111111111111111111111111

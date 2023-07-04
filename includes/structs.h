@@ -72,16 +72,16 @@ typedef struct s_options {
 	int		ceil_colors[4];
 }	t_options;
 
-
 typedef struct s_sprite {
-  double	x;
-  double	y;
-  int		*texture;
+	double	x;
+	double	y;
+	int		*texture;
 }	t_sprite;
 
 typedef struct s_game {
 	struct s_options	*options;
 	char				**map;
+	size_t				map_size;
 	t_player			player;
 	t_colors			col;
 	t_point				point;

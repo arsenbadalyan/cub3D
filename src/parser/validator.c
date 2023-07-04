@@ -73,9 +73,9 @@ int	call_validator(t_game *game, char **map)
 	game->map = get_clear_map(map, 0, 0);
 	map = game->map;
 	game->map_size = get_2d_array_length((void **)map);
-	if (validate_xpm(game))
-		return (EXIT_FAILURE + 1);
-	if (main_flag_validator(game, map))
-		return (EXIT_FAILURE);
+	// if (validate_xpm(game))
+	// 	return (EXIT_FAILURE + 1);
+	// if (main_flag_validator(game, map))
+	// 	return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

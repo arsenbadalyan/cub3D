@@ -91,10 +91,6 @@ void	game_init(t_game *game)
 	game->sp.x = 0;
 	game->sp.y = 0;
 	game->sp.texture = NULL;
-	// game->map_t.f = -1;
-	// game->map_t.c = -1;
-	// game->map_t.x = 0;
-	// game->map_t.y = 0;
 	game->player.pos.x = 0;
 	game->player.pos.y = 0;
 	game->player.dir.x = 0;
