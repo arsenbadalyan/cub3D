@@ -125,31 +125,3 @@ int	main(int argc, char **argv)
 	game_loop(mlx, game);
 	return (EXIT_SUCCESS);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//	int i = 0;
-// 	int j = 0;
-// 	// puts("ALO");
-// 	while (g->map[i])
-// 	{
-// 		j = 0;	
-// 		while (g->map[i][j])
-// 		{
-// 			// write (1, &g->map[i][j], 1);
-// 			if (g->map[i][j] == '2')
-// 				printf ("i = %d j = %d\n", i,j);
-// 			j++;
-// 		}
-// 		// write(1, "\n",1 );
-// 		i++;
-// 	}

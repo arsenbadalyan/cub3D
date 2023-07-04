@@ -55,6 +55,7 @@
 # define E_WRPTH "File you want to run is invalid."
 # define E_XPM   ".xpm to file convert error."
 # define E_WRCNF "Wrong map configuration. Please fill map in correct way."
+# define E_WRXPM "XPM file path is invalid. Please check and run again."
 # define E_MLXLIB "MiniLibX error"
 
 // Options identifiers
@@ -66,6 +67,13 @@
 # define FL_ID "F"
 # define CL_ID "C"
 
+// Game flags
+# define WALL_FLAG '1'
+# define SPACE_FLAG '0'
+# define DOOR_FLAG 'D'
+# define VALID_FLAGS "10D \n"
+# define UNIQUE_FLAGS "NSEW"
+
 // Custom libs
 # include "libft.h"
 # include "get_next_line.h"
@@ -76,7 +84,9 @@ void	parse_controller(t_game *game, char **argv, int argc);
 
 // Validators
 int		call_validator(t_game *game, char **map);
-int		validate_options(t_game *game, char **map);
+int validate_options(t_game *game, char **map, int i, int size);
+int		main_flag_validator(t_game* game, char **map);
+int		is_full_line(char* line);
 
 // MiniLibX
 int		close_win(t_mlx *p);

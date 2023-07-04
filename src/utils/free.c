@@ -1,7 +1,7 @@
 
 #include "cub3D.h"
 
-void *free_single(void **addr)
+void	*free_single(void **addr)
 {
 	if (*addr)
 	{
@@ -11,9 +11,9 @@ void *free_single(void **addr)
 	return (0);
 }
 
-void *free_double(void ***addr)
+void	*free_double(void ***addr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (*addr)
@@ -28,7 +28,7 @@ void *free_double(void ***addr)
 	return (0);
 }
 
-void free_all_mem(t_game *game)
+void	free_all_mem(t_game *game)
 {
 	free_double((void *)&game->map);
 	free_single((void *)&game->options);
