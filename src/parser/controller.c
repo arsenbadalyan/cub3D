@@ -47,7 +47,7 @@ static void	trim_options(t_game *game, char **map)
 {
 	size_t	i;
 	size_t	size;
-	char		*trimmed;
+	char	*trimmed;
 
 	i = 0;
 	size = 0;

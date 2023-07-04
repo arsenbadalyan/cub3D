@@ -5,13 +5,13 @@
 */
 static int	cmp_opt(t_game *game, t_options *options, char *id, char *needle);
 static int	cmp_addn_opt(t_game *game, t_options *options,
-	char *id, char *needle);
+				char *id, char *needle);
 static int	is_rgb(char *rgb, int *addr, size_t i, size_t j);
 
 /*
     Checking NO, SO, WE, EA options
 */
-static int cmp_opt(t_game *game, t_options *options, char *id, char *needle)
+static int	cmp_opt(t_game *game, t_options *options, char *id, char *needle)
 {
 	char	*dup_needle;
 
@@ -28,7 +28,7 @@ static int cmp_opt(t_game *game, t_options *options, char *id, char *needle)
 		options->path_to_ea = dup_needle;
 	else
 	{
-		free_single((void *)&dup_needle);	
+		free_single((void *)&dup_needle);
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
@@ -42,7 +42,7 @@ static int cmp_opt(t_game *game, t_options *options, char *id, char *needle)
 static int	is_rgb(char *rgb, int *addr, size_t i, size_t j)
 {
 	size_t	len;
-	int			nbr;
+	int		nbr;
 
 	if (!rgb)
 		return (EXIT_FAILURE);
@@ -56,7 +56,7 @@ static int	is_rgb(char *rgb, int *addr, size_t i, size_t j)
 	{
 		if (!ft_isdigit(rgb[i]))
 			return (EXIT_FAILURE);
-        i++;
+		i++;
 	}
 	nbr = ft_atoi(rgb + j);
 	if (nbr > 255)
@@ -65,11 +65,12 @@ static int	is_rgb(char *rgb, int *addr, size_t i, size_t j)
 	return (EXIT_SUCCESS);
 }
 
-static int	cmp_addn_opt(t_game* game, t_options* options, char *id, char *needle)
+static int	cmp_addn_opt(t_game *game, t_options *options,
+	char *id, char *needle)
 {
 	size_t	i;
-	int			*option_ptr;
-	char		**rgb;
+	int		*option_ptr;
+	char	**rgb;
 
 	i = 1;
 	if (!options->floor_colors[0] && !ft_strcmp(FL_ID, id))
@@ -79,15 +80,16 @@ static int	cmp_addn_opt(t_game* game, t_options* options, char *id, char *needle
 	else
 		return (EXIT_FAILURE);
 	rgb = ft_split(needle, ',');
-    if (!rgb)
-        catch_error(game, E_NOMEM);
+	if (!rgb)
+		catch_error(game, E_NOMEM);
 	if (rgb[3] != NULL && !free_double((void *)&rgb))
 		return (EXIT_FAILURE);
 	while (i < 4)
 	{
-		if (is_rgb(rgb[i - 1], &option_ptr[i], 0, 0) && !free_double((void *)&rgb))
+		if (is_rgb(rgb[i - 1], &option_ptr[i], 0, 0)
+			&& !free_double((void *)&rgb))
 			return (EXIT_FAILURE);
-        i++;
+		i++;
 	}
 	option_ptr[0] = 1;
 	return (EXIT_SUCCESS);
@@ -98,7 +100,7 @@ static int	cmp_addn_opt(t_game* game, t_options* options, char *id, char *needle
 */
 int	validate_options(t_game *game, char **map, int i, int size)
 {
-	char **cur_line;
+	char	**cur_line;
 
 	cur_line = NULL;
 	while (map[i] && size < REQUIRED_IDS)
@@ -112,9 +114,9 @@ int	validate_options(t_game *game, char **map, int i, int size)
 			&& !free_double((void *)&cur_line))
 			return (EXIT_FAILURE);
 		if (cmp_opt(game, game->options, cur_line[0], cur_line[1])
-            && cmp_addn_opt(game, game->options, cur_line[0], cur_line[1])
+			&& cmp_addn_opt(game, game->options, cur_line[0], cur_line[1])
 			&& !free_double((void *)&cur_line))
-            return (EXIT_FAILURE);
+			return (EXIT_FAILURE);
 		free_double((void *)&cur_line);
 		i++;
 		size++;

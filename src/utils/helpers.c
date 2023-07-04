@@ -1,15 +1,15 @@
 #include "cub3D.h"
 
-int is_full_line(char* line)
+int	is_full_line(char *line)
 {
 	size_t	i;
 
 	i = 0;
-	if(!line || !line[0])
+	if (!line || !line[0])
 		return (EXIT_SUCCESS);
-	while(line[i])
+	while (line[i])
 	{
-		if(!ft_strchr(WHITE_SPACE, line[i]))
+		if (!ft_strchr(WHITE_SPACE, line[i]))
 			return (EXIT_FAILURE);
 		i++;
 	}
@@ -19,11 +19,11 @@ int is_full_line(char* line)
 /*
 	Checking file extention
 */
-int is_correct_ext(t_game* game, char* path, char* check)
+int	is_correct_ext(t_game *game, char *path, char *check)
 {
-	char **ext;
-	size_t size;
-	int status;
+	char	**ext;
+	size_t	size;
+	int		status;
 
 	status = EXIT_SUCCESS;
 	ext = ft_split(path, '.');

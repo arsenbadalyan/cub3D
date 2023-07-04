@@ -1,25 +1,25 @@
 #include "cub3D.h"
 
-t_game *init_game()
+t_game	*init_game(void)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = (t_game *)malloc(sizeof(t_game));
-	if(!game)
+	if (!game)
 		catch_error(game, E_NOMEM);
 	game->options = init_options();
-	if(!game->options)
+	if (!game->options)
 		catch_error(game, E_NOMEM);
 	game->map = NULL;
 	return (game);
 }
 
-t_options *init_options()
+t_options	*init_options(void)
 {
-	t_options *options;
+	t_options	*options;
 
 	options = (t_options *)malloc(sizeof(t_options));
-	if(!options)
+	if (!options)
 		return (NULL);
 	options->path_to_no = NULL;
 	options->path_to_so = NULL;

@@ -1,8 +1,8 @@
 #include "cub3D.h"
 
-size_t get_2d_array_length(void **array)
+size_t	get_2d_array_length(void **array)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (array[i])
@@ -10,9 +10,9 @@ size_t get_2d_array_length(void **array)
 	return (i);
 }
 
-char **init_2d_array(void)
+char	**init_2d_array(void)
 {
-	char **arr;
+	char	**arr;
 
 	arr = (char **)malloc(sizeof(char *));
 	if (!arr)
@@ -21,10 +21,10 @@ char **init_2d_array(void)
 	return (arr);
 }
 
-char **push_to_double_array(char **arr, char *new_line)
+char	**push_to_double_array(char **arr, char *new_line)
 {
-	char **new_arr;
-	size_t size;
+	char	**new_arr;
+	size_t	size;
 
 	if (!arr)
 		arr = init_2d_array();
