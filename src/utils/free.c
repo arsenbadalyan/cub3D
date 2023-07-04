@@ -32,5 +32,13 @@ void	free_all_mem(t_game *game)
 {
 	free_double((void *)&game->map);
 	free_single((void *)&game->options);
+	if (game->map_t.ea)
+		free_single((void *)&game->map_t.ea);
+	if (game->map_t.so)
+		free_single((void *)&game->map_t.so);
+	if (game->map_t.no)
+		free_single((void *)&game->map_t.no);
+	if (game->map_t.we)
+		free_single((void *)&game->map_t.we);
 	free_single((void *)&game);
 }
