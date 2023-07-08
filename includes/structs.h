@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:33:39 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/01 13:51:28 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 13:36:27 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,31 @@ typedef struct s_options {
 	int		ceil_colors[4];
 }	t_options;
 
-
 typedef struct s_sprite {
-  double	x;
-  double	y;
-  int		*texture;
+	double	sp_x;
+	double	sp_y;
+	double	inv_d;
+	double	tr_x;
+	double	tr_y;
+	int		sp_sc_x;
+	int		sp_h;
+	int		dr_s_y;
+	int		dr_e_y;
+	int		sp_w;
+	int		dr_s_x;
+	int		dr_e_x;
+	int		st;
+	int		tex_x;
+	int		tex_y;
+	int		color;
+	int		*texture;
+	int		*soldier_1;
+	int		*soldier_2;
+	int		*soldier_3;
+	int		*soldier_4;
+	int		*soldier_5;
+	int		*soldier_6;
+	int		*soldier_7;
 }	t_sprite;
 
 typedef struct s_game {

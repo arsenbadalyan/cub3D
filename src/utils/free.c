@@ -40,5 +40,12 @@ void free_all_mem(t_game *game)
 		free_single((void *)&game->map_t.no);
 	if (game->map_t.we)
 		free_single((void *)&game->map_t.we);
+	free_single((void *)&game->sp.soldier_1);
+	free_single((void *)&game->sp.soldier_2);
+	free_single((void *)&game->sp.soldier_3);
+	free_single((void *)&game->sp.soldier_4);
+	free_single((void *)&game->sp.soldier_5);
+	free_single((void *)&game->sp.soldier_6);
+	free_single((void *)&game->sp.soldier_7);
 	free_single((void *)&game);
 }

@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:36:43 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/01 17:07:16 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 10:32:36 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,7 @@ void	game_init(t_game *game)
 	game->map_t.so = NULL;
 	game->map_t.we = NULL;
 	game->map_t.ea = NULL;
-	game->sp.x = 0;
-	game->sp.y = 0;
 	game->sp.texture = NULL;
-	// game->map_t.f = -1;
-	// game->map_t.c = -1;
-	// game->map_t.x = 0;
-	// game->map_t.y = 0;
 	game->player.pos.x = 0;
 	game->player.pos.y = 0;
 	game->player.dir.x = 0;

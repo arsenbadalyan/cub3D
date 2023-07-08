@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:35:26 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/01 16:16:20 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 13:32:14 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	draw_game(t_mlx *mlx)
 		mlx->zbuffer[g->ray.i] = g->wall.dist;
 		g->ray.i++;
 	}
-	my_sprite(mlx);
 	minimap(mlx);
 }
 
@@ -76,6 +75,8 @@ void	ceiling_floor(t_mlx *mlx, int color, int start)
 int	create_walls(t_mlx *mlx)
 {
 	draw_game(mlx);
+	animation(mlx);
+	my_sprite(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img_ptr, 0, 0);
 	return (0);
 }
