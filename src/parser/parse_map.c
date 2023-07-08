@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/08 19:17:00 by arsbadal          #+#    #+#             */
+/*   Updated: 2023/07/08 19:17:26 by arsbadal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 // Map validation rules
@@ -33,11 +45,16 @@ static void	get_borders(t_game *game, char **map, size_t *borders)
 */
 static int	check_flag(t_game *game, size_t *borders, size_t i, size_t j)
 {
-	char	sym;
+	char		sym;
+	static int	sprites;
 
 	sym = game->map[i][j];
 	if (sym == WALL_FLAG || ft_strchr(WHITE_SPACE, sym))
 		return (EXIT_SUCCESS);
+	if (sym == SPRITE_FLAG)
+		sprites++;
+	if (sprites > 1)
+		return (EXIT_FAILURE);
 	if (i == 0
 		|| !game->map[i + 1]
 		|| !game->map[i][j + 1]

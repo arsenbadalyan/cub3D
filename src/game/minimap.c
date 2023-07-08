@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:38:00 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 16:22:44 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 17:48:26 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	get_color(char c)
 {
 	int	color;
 
+	color = 0;
 	if (c == '0')
 		color = 0xFFFFFF;
 	else if (c == '1')
@@ -53,7 +54,7 @@ void	minimap(t_mlx *mlx)
 	int		color;
 
 	game = mlx->game;
-	i = 5;
+	i = -1;
 	while (game->map[++i])
 	{
 		j = -1;
@@ -63,9 +64,9 @@ void	minimap(t_mlx *mlx)
 			if (game->map[i][j] == '0' || game->map[i][j] == '1'
 				|| game->map[i][j] == '2' || game->map[i][j] == '3'
 				|| game->map[i][j] == '4')
-				draw_minimap(mlx, color, j * 5, (i - 5) * 5);
+				draw_minimap(mlx, color, j * 5, (i) * 5);
 		}
 	}
 	draw_minimap(mlx, 0x00FF00,
-		(int)game->player.pos.x * 5, ((int)game->player.pos.y - 5) * 5);
+		(int)game->player.pos.x * 5, ((int)game->player.pos.y) * 5);
 }

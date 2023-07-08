@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 13:31:01 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 16:45:59 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 17:48:55 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_sp_x(char **map, char c)
 	int	i;
 	int	j;
 
-	i = 5;
+	i = -1;
 	while (map[++i])
 	{
 		j = -1;
@@ -35,7 +35,7 @@ int	get_sp_y(char **map, char c)
 	int	i;
 	int	j;
 
-	i = 5;
+	i = -1;
 	while (map[++i])
 	{
 		j = -1;

@@ -6,7 +6,7 @@
 /*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:33:09 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 17:10:31 by arsbadal         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:16:00 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@
 # define KEY_F 3
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
-// Sprite
-# define uDiv 1
-# define vDiv 1
-# define vMove 0.0
 
 // Constants
 # define WHITE_SPACE	" \t\r\n\f\v"
@@ -77,8 +73,9 @@
 // Game flags
 # define WALL_FLAG '1'
 # define SPACE_FLAG '0'
-# define DOOR_FLAG 'D'
-# define VALID_FLAGS "10D \n"
+# define DOOR_FLAG '3'
+# define SPRITE_FLAG '2'
+# define VALID_FLAGS "1203 \n"
 # define UNIQUE_FLAGS "NSEW"
 
 // Custom libs
@@ -103,7 +100,7 @@ t_mlx	*init_mlx(t_game *game);
 
 // Calculation
 void	set_direction(t_game *game, char pov, double y, double x);
-int		player_position(t_game *game);
+void	player_position(t_game *game);
 void	calculate(t_game *game);
 void	shoot_ray(t_game *game);
 

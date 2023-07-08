@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:38:13 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 16:19:08 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 17:13:16 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	mouse(int x, int y, t_mlx *mlx)
 	t_game	*g;
 
 	(void)y;
+	key = 0;
 	g = mlx->game;
 	if (x < g->pos_mouse.x && x < W_WIDTH / 2)
 		key = LEFT_ARROW;

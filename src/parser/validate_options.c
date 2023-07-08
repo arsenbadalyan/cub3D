@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_options.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/08 19:17:31 by arsbadal          #+#    #+#             */
+/*   Updated: 2023/07/08 19:17:31 by arsbadal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 /*
@@ -68,11 +80,11 @@ static int	is_rgb(char *rgb, int *addr, size_t i, size_t j)
 static int	cmp_addn_opt(t_game *game, t_options *options,
 	char *id, char *needle)
 {
-	size_t	i;
+	int		i;
 	int		*option_ptr;
 	char	**rgb;
 
-	i = 1;
+	i = 0;
 	if (!options->floor_colors[0] && !ft_strcmp(FL_ID, id))
 		option_ptr = options->floor_colors;
 	else if (!options->ceil_colors[0] && !ft_strcmp(CL_ID, id))
@@ -84,14 +96,14 @@ static int	cmp_addn_opt(t_game *game, t_options *options,
 		catch_error(game, E_NOMEM);
 	if (rgb[3] != NULL && !free_double((void *)&rgb))
 		return (EXIT_FAILURE);
-	while (i < 4)
+	while (++i < 4)
 	{
 		if (is_rgb(rgb[i - 1], &option_ptr[i], 0, 0)
 			&& !free_double((void *)&rgb))
 			return (EXIT_FAILURE);
-		i++;
 	}
 	option_ptr[0] = 1;
+	free_double((void *)&rgb);
 	return (EXIT_SUCCESS);
 }
 

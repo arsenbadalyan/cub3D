@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/08 19:17:40 by arsbadal          #+#    #+#             */
+/*   Updated: 2023/07/08 19:17:54 by arsbadal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	*free_single(void **addr)
@@ -30,17 +42,16 @@ void	*free_double(void ***addr)
 void	free_all_mem(t_game *game)
 {
 	free_double((void *)&game->map);
+	free_single((void *)&game->options->path_to_ea);
+	free_single((void *)&game->options->path_to_so);
+	free_single((void *)&game->options->path_to_we);
+	free_single((void *)&game->options->path_to_no);
 	free_single((void *)&game->options);
-	if (game->map_t.ea)
-		free_single((void *)&game->map_t.ea);
-	if (game->map_t.so)
-		free_single((void *)&game->map_t.so);
-	if (game->map_t.no)
-		free_single((void *)&game->map_t.no);
-	if (game->map_t.we)
-		free_single((void *)&game->map_t.we);
-	if (game->map_t.door)
-		free_single((void *)&game->map_t.door);
+	free_single((void *)&game->map_t.ea);
+	free_single((void *)&game->map_t.so);
+	free_single((void *)&game->map_t.no);
+	free_single((void *)&game->map_t.we);
+	free_single((void *)&game->map_t.door);
 	free_single((void *)&game->sp.soldier_1);
 	free_single((void *)&game->sp.soldier_2);
 	free_single((void *)&game->sp.soldier_3);

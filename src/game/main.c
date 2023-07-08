@@ -6,7 +6,7 @@
 /*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:37:49 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 17:10:42 by arsbadal         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:06:40 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	texture_configure(t_mlx *mlx)
 void	game_loop(t_mlx *mlx, t_game *game)
 {
 	game_init(game);
-	if (player_position(game))
-		catch_error(game, E_WRCNF);
+	player_position(game);
 	mlx->sp_x = get_sp_x(mlx->game->map, '2');
 	mlx->sp_y = get_sp_y(mlx->game->map, '2');
 	texture_configure(mlx);
@@ -57,6 +56,7 @@ int	main(int argc, char **argv)
 	parse_controller(game, argv, argc);
 	mlx = init_mlx(game);
 	game_loop(mlx, game);
+	puts("ara");
 	system("leaks cub3D");
 	return (EXIT_SUCCESS);
 }

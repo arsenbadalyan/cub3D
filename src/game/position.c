@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:38:21 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 13:00:02 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:16:44 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,12 @@ void	set_direction(t_game *game, char pov, double y, double x)
 		game->player.dir.y = -1;
 }
 
-int	player_position(t_game *game)
+void	player_position(t_game *game)
 {
 	double	i;
 	double	j;
-	int		count;
 
-	i = 5;
-	count = 0;
+	i = -1;
 	while (game->map[(int)++i])
 	{
 		j = -1;
@@ -52,16 +50,11 @@ int	player_position(t_game *game)
 		{
 			if (ft_strchr("NSWE", game->map[(int)i][(int)j]))
 			{
-				if (count++)
-					return (EXIT_FAILURE);
 				set_direction(game, game->map[(int)i][(int)j], i, j);
 				game->map[(int)i][(int)j] = '0';
 			}
 		}
 	}
-	if (!count)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
 }
 
 void	copy_texture(int **address, void *img)
@@ -85,15 +78,7 @@ void	get_textures(t_mlx *mlx, t_game *game, int **add, char *path)
 	void	*tmp_img;
 	int		arr[2];
 
-	if (check_xpm_file(path))
-		catch_error(game, E_WREXT);
 	tmp_img = mlx_xpm_file_to_image(mlx->mlx, path, &arr[0], &arr[1]);
-	if (!tmp_img || arr[0] != 64 || arr[1] != 64)
-	{
-		if (tmp_img)
-			mlx_destroy_image(mlx->mlx, tmp_img);
-		catch_error(game, E_XPM);
-	}
 	copy_texture(add, tmp_img);
 	mlx_destroy_image(mlx->mlx, tmp_img);
 }

@@ -1,7 +1,7 @@
 # Main Variables
 NAME     = cub3D
 COMPILER = cc
-CFLAGS   = -Wall -Wextra -Werror
+# CFLAGS   = -Wall -Wextra -Werror
 RM       = rm -rf
 OUTPUT   = ./$(NAME)
 LIBS     = -I./includes/ -I./mlx/
