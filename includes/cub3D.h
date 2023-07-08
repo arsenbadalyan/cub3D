@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:33:09 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/01 13:13:49 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 17:09:23 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@
 # define KEY_D 2
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
+// Sprite
+# define uDiv 1
+# define vDiv 1
+# define vMove 0.0
 
 // Constants
 # define WHITE_SPACE	" \t\r\n\f\v"
@@ -125,6 +129,10 @@ void	left_right_move(int key, t_game *g);
 void	rotate_player(int key, t_game *g, double r);
 void	forw_back_move(int key, t_game *g);
 int		mouse(int x, int y, t_mlx *mlx);
+
+// Sprite
 void	my_sprite(t_mlx *mlx);
+void	my_sprite_draw(t_mlx *mlx, t_game *g);
+void	animation(t_mlx *mlx);
 
 #endif
