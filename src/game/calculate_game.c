@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:35:15 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/01 16:17:56 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 15:38:58 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	shoot_ray(t_game *game)
 			game->map_t.y += game->ray.step_y;
 			game->ray.vert_hit = 1;
 		}
-		if (game->map[(int)game->map_t.y][(int)game->map_t.x] == '1')
+		if (game->map[(int)game->map_t.y][(int)game->map_t.x] == '1'
+			|| game->map[(int)game->map_t.y][(int)game->map_t.x] == '3')
 			hit = 1;
 	}
 }
@@ -92,7 +93,9 @@ int	find(t_game *game, int x, int y)
 {
 	int	*tmp;
 
-	if (!game->ray.vert_hit)
+	if (game->map[(int)game->map_t.y][(int)game->map_t.x] == '3')
+		tmp = game->map_t.door;
+	else if (!game->ray.vert_hit)
 	{
 		if (game->ray.dir.x >= 0)
 			tmp = game->map_t.ea;
