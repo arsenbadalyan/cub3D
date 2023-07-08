@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:36:43 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 10:32:36 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 15:18:45 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ t_mlx	*init_mlx(t_game *game)
 	if (!mlx->addr)
 		catch_error(game, E_MLXLIB);
 	mlx->game = game;
+	mlx->sp_x = 0;
+	mlx->sp_y = 0;
 	return (mlx);
 }
 
@@ -88,6 +90,7 @@ void	game_init(t_game *game)
 	game->map_t.so = NULL;
 	game->map_t.we = NULL;
 	game->map_t.ea = NULL;
+	game->map_t.door = NULL;
 	game->sp.texture = NULL;
 	game->player.pos.x = 0;
 	game->player.pos.y = 0;

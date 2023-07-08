@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:38:13 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 13:21:24 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 16:19:08 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,30 @@ int	mouse(int x, int y, t_mlx *mlx)
 
 void	forw_back_move(int key, t_game *g)
 {
+	t_player	*p;
+
+	p = &g->player;
 	if (key == KEY_W)
 	{
-		if (g->map[(int)g->player.pos.y]
-			[(int)(g->player.pos.x + g->player.dir.x * SPD_P)] == '0')
-			g->player.pos.x += g->player.dir.x * SPD_P;
-		if (g->map[(int)(g->player.pos.y + g->player.dir.y * SPD_P)]
-			[(int)(g->player.pos.x)] == '0')
-			g->player.pos.y += g->player.dir.y * SPD_P;
+		if (g->map[(int)p->pos.y][(int)(p->pos.x + p->dir.x * S)] == '0'
+			|| g->map[(int)p->pos.y][(int)(p->pos.x + p->dir.x * S)] == '2'
+			|| g->map[(int)p->pos.y][(int)(p->pos.x + p->dir.x * S)] == '4')
+			p->pos.x += p->dir.x * S;
+		if (g->map[(int)(p->pos.y + p->dir.y * S)][(int)(p->pos.x)] == '0'
+			|| g->map[(int)(p->pos.y + p->dir.y * S)][(int)(p->pos.x)] == '2'
+			|| g->map[(int)(p->pos.y + p->dir.y * S)][(int)(p->pos.x)] == '4')
+			p->pos.y += p->dir.y * S;
 	}
 	else if (key == KEY_S)
 	{
-		if (g->map[(int)g->player.pos.y]
-			[(int)(g->player.pos.x - g->player.dir.x * SPD_P)] == '0')
-			g->player.pos.x -= g->player.dir.x * SPD_P;
-		if (g->map[(int)(g->player.pos.y - g->player.dir.y * SPD_P)]
-			[(int)(g->player.pos.x)] == '0')
-			g->player.pos.y -= g->player.dir.y * SPD_P;
+		if (g->map[(int)p->pos.y][(int)(p->pos.x - p->dir.x * S)] == '0'
+			|| g->map[(int)p->pos.y][(int)(p->pos.x - p->dir.x * S)] == '2'
+			|| g->map[(int)p->pos.y][(int)(p->pos.x - p->dir.x * S)] == '4')
+			p->pos.x -= p->dir.x * S;
+		if (g->map[(int)(p->pos.y - p->dir.y * S)][(int)(p->pos.x)] == '0'
+			|| g->map[(int)(p->pos.y - p->dir.y * S)][(int)(p->pos.x)] == '2'
+			|| g->map[(int)(p->pos.y - p->dir.y * S)][(int)(p->pos.x)] == '4')
+			p->pos.y -= p->dir.y * S;
 	}
 }
 
@@ -78,23 +85,30 @@ void	rotate_player(int key, t_game *g, double r)
 
 void	left_right_move(int key, t_game *g)
 {
+	t_player	*p;
+
+	p = &g->player;
 	if (key == KEY_D)
 	{
-		if (g->map[(int)(g->player.pos.y)]
-			[(int)(g->player.pos.x + g->point.x * SPD_P)] == '0')
-			g->player.pos.x += g->point.x * SPD_P;
-		if (g->map[(int)(g->player.pos.y + g->point.y * SPD_P)]
-			[(int)(g->player.pos.x)] == '0')
-			g->player.pos.y += g->point.y * SPD_P;
+		if (g->map[(int)(p->pos.y)][(int)(p->pos.x + g->point.x * S)] == '0'
+			|| g->map[(int)(p->pos.y)][(int)(p->pos.x + g->point.x * S)] == '2'
+			|| g->map[(int)(p->pos.y)][(int)(p->pos.x + g->point.x * S)] == '4')
+			p->pos.x += g->point.x * S;
+		if (g->map[(int)(p->pos.y + g->point.y * S)][(int)(p->pos.x)] == '0'
+			|| g->map[(int)(p->pos.y + g->point.y * S)][(int)(p->pos.x)] == '2'
+			|| g->map[(int)(p->pos.y + g->point.y * S)][(int)(p->pos.x)] == '4')
+			p->pos.y += g->point.y * S;
 	}
 	else if (key == KEY_A)
 	{
-		if (g->map[(int)(g->player.pos.y)]
-			[(int)(g->player.pos.x - g->point.x * SPD_P)] == '0')
-			g->player.pos.x -= g->point.x * SPD_P;
-		if (g->map[(int)(g->player.pos.y - g->point.y * SPD_P)]
-			[(int)(g->player.pos.x)] == '0')
-			g->player.pos.y -= g->point.y * SPD_P;
+		if (g->map[(int)(p->pos.y)][(int)(p->pos.x - g->point.x * S)] == '0'
+			|| g->map[(int)(p->pos.y)][(int)(p->pos.x - g->point.x * S)] == '2'
+			|| g->map[(int)(p->pos.y)][(int)(p->pos.x - g->point.x * S)] == '4')
+			p->pos.x -= g->point.x * S;
+		if (g->map[(int)(p->pos.y - g->point.y * S)][(int)(p->pos.x)] == '0'
+			|| g->map[(int)(p->pos.y - g->point.y * S)][(int)(p->pos.x)] == '2'
+			|| g->map[(int)(p->pos.y - g->point.y * S)][(int)(p->pos.x)] == '4')
+			p->pos.y -= g->point.y * S;
 	}
 }
 
@@ -105,6 +119,8 @@ int	keys(int key, t_mlx *mlx)
 	game = mlx->game;
 	if (key == ESC)
 		close_win(mlx);
+	else if (key == KEY_F)
+		open_the_door(mlx);
 	else if (key == KEY_W || key == KEY_S)
 		forw_back_move(key, game);
 	else if (key == KEY_A || key == KEY_D)

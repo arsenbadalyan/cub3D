@@ -6,15 +6,51 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 13:31:01 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 13:37:03 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 16:45:59 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+int	get_sp_x(char **map, char c)
+{
+	int	i;
+	int	j;
+
+	i = 5;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == c)
+				return (j);
+		}
+	}
+	return (0);
+}
+
+int	get_sp_y(char **map, char c)
+{
+	int	i;
+	int	j;
+
+	i = 5;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == c)
+				return (i);
+		}
+	}
+	return (0);
+}
+
 void	animation(t_mlx *mlx)
 {
-	t_game	*g;
+	t_game		*g;
 	static int	i;
 
 	g = mlx->game;
@@ -68,13 +104,13 @@ void	my_sprite_draw(t_mlx *mlx, t_game *g)
 	}
 }
 
-void	my_sprite(t_mlx *mlx)
+void	my_sprite(t_mlx *mlx, int x, int y)
 {
 	t_game	*g;
 
 	g = mlx->game;
-	g->sp.sp_x = 4 - g->player.pos.x + 0.2;
-	g->sp.sp_y = 10 - g->player.pos.y + 0.2;
+	g->sp.sp_x = x - g->player.pos.x + 0.2;
+	g->sp.sp_y = y - g->player.pos.y + 0.2;
 	g->sp.inv_d = 1.0 / (g->point.y
 			* g->player.dir.x - g->player.dir.y * g->point.x);
 	g->sp.tr_x = g->sp.inv_d * (-g->player.dir.y

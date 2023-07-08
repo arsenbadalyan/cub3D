@@ -6,7 +6,7 @@
 /*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:33:09 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 17:09:23 by arsbadal         ###   ########.fr       */
+/*   Updated: 2023/07/08 17:10:31 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 // Keys
 
 // Linux
-# define SPD_P 0.6
+# define S 0.6
 # define SPD_R 0.2
 // # define ESC 65307
 // # define KEY_W 119
@@ -38,6 +38,7 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_F 3
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
 // Sprite
@@ -131,8 +132,13 @@ void	forw_back_move(int key, t_game *g);
 int		mouse(int x, int y, t_mlx *mlx);
 
 // Sprite
-void	my_sprite(t_mlx *mlx);
+void	my_sprite(t_mlx *mlx, int x, int y);
 void	my_sprite_draw(t_mlx *mlx, t_game *g);
 void	animation(t_mlx *mlx);
+int		get_sp_x(char **map, char c);
+int		get_sp_y(char **map, char c);
+
+// Door
+void	open_the_door(t_mlx *mlx);
 
 #endif

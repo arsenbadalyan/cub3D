@@ -6,7 +6,7 @@
 /*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:33:39 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 17:09:33 by arsbadal         ###   ########.fr       */
+/*   Updated: 2023/07/08 17:10:37 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_map
 	int		*so;
 	int		*we;
 	int		*ea;
+	int		*door;
 	int		f;
 	int		c;
 	int		x;
@@ -125,6 +126,8 @@ typedef struct s_mlx {
 	int		endian;
 	t_game	*game;
 	double	zbuffer[W_WIDTH];
+	int		sp_x;
+	int		sp_y;
 }	t_mlx;
 
 #endif
