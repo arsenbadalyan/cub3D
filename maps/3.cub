@@ -1,6 +1,6 @@
 NO ./sprites/Walls/North.xpm
-C 3,3,128
-SO ./sprites/Walls/South.xpm
+ C 3,3,128,,,,,,,,,,,,,,,
+   				             SO              ./sprites/Walls/South.xpm
 
 
 

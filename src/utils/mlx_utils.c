@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:39:57 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 13:19:16 by armartir         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:49:03 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	close_win(t_mlx *p)
 	mlx_destroy_image(p->mlx, p->img_ptr);
 	mlx_destroy_window(p->mlx, p->win);
 	free_all_mem(p->game);
-	system("leaks cub3D");
 	exit (0);
 	return (0);
 }

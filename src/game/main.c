@@ -6,7 +6,7 @@
 /*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:37:49 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 19:06:40 by arsbadal         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:48:44 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,5 @@ int	main(int argc, char **argv)
 	mlx = init_mlx(game);
 	game_loop(mlx, game);
 	puts("ara");
-	system("leaks cub3D");
 	return (EXIT_SUCCESS);
 }

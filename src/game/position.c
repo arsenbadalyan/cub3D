@@ -6,7 +6,7 @@
 /*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:38:21 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 19:16:44 by arsbadal         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:48:19 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	get_textures(t_mlx *mlx, t_game *game, int **add, char *path)
 	void	*tmp_img;
 	int		arr[2];
 
+	(void)game;
 	tmp_img = mlx_xpm_file_to_image(mlx->mlx, path, &arr[0], &arr[1]);
 	copy_texture(add, tmp_img);
 	mlx_destroy_image(mlx->mlx, tmp_img);

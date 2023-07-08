@@ -6,7 +6,7 @@
 /*   By: arsbadal <arsbadal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 10:33:09 by armartir          #+#    #+#             */
-/*   Updated: 2023/07/08 19:16:00 by arsbadal         ###   ########.fr       */
+/*   Updated: 2023/07/08 19:41:52 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,8 @@
 
 // Keys
 
-// Linux
 # define S 0.6
 # define SPD_R 0.2
-// # define ESC 65307
-// # define KEY_W 119
-// # define KEY_A 97
-// # define KEY_S 115
-// # define KEY_D 100
-// # define LEFT_ARROW 65361
-// # define RIGHT_ARROW 65363
-
 # define ESC 53
 # define KEY_W 13
 # define KEY_A 0
@@ -45,8 +36,8 @@
 // Constants
 # define WHITE_SPACE	" \t\r\n\f\v"
 # define EXTENTION		"cub"
-# define W_WIDTH 1280
-# define W_HEIGHT 720
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
 # define TITLE "Cub3D"
 
 // Error messages
